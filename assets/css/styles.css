@@ -19,6 +19,10 @@
     --disabled-color: #fff3;
 }
 
+html{
+    font-size: 62.5%;
+}
+
 body{
     color: var(--main-color);
 }
@@ -29,8 +33,78 @@ header{
     width: 100%;
     top: 0;
     left: 0;
-    padding: 2px 9%;
+    padding: 2rem 9%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 100;
+}
+
+header .active{
+    animation: show-header 1.5s linear forwards;
+    animation-delay: 1.2s ;
+}
+
+@keyframes show-header{
+    100%{
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.logo {
+    font-size: 3rem;
+    color: var(--white-color);
+    font-weight: 700;
+}
+
+nav a {
+    font-size: 2rem;
+    color: var(--white-color);
+    font-weight: 500;
+    margin-left: 3.5rem;
+    transition: .5s;
+}
+
+nav a:hover, 
+nav a.active {
+    color: var(--main-color);
+}
+
+.bars-box{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.bars-box .bar{
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    animation: hide-bars .5s ease-in-out both;
+    animation-delay: calc(.1s * var(--i));
+}
+
+@keyframes hide-bars{
+    0%{
+        transform: translateY(0);
+    }
+    100%{
+        transform: translateY(-100%);
+    }
+}
+
+.bars-box .active .bar{
+    animation: show-bars .5s ease-in-out both;
+    animation-delay: calc(.1s * var(--i));
+}
+
+@keyframes show-bars{
+    0%{
+        transform: translateY(-100%);
+    }
+    100%{
+        transform: translateY(0);
+    }
 }
